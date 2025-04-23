@@ -1,1 +1,152 @@
-/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(
+    to right,
+    rgb(255 179 255) 0%,
+    rgb(147 8 147) 80%
+  );
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.container {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 60%;
+  height: 80%;
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  padding: 5px;
+  color: rgb(112 11 132);
+}
+
+.container .wallet-div {
+  border: 1px solid transparent;
+  width: 60%;
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 20%);
+  padding: 20px;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+#add-page-btn {
+  margin: 0 0 20px 700px;
+}
+
+.subscription-div {
+  border: 2px solid transparent;
+  box-shadow: 3px 3px 5px rgb(0 0 0 / 20%);
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.subscription-div table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid transparent;
+  background-color: #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: hidden;
+  box-shadow:
+    5px 5px 10px rgb(0 0 0 / 20%),
+    -5px -5px 10px rgb(0 0 0 / 20%);
+}
+
+.subscription-div table th,
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  font-size: 18px;
+  color: rgb(112 11 132);
+  font-weight: 600;
+}
+
+.subscription-div table th {
+  color: rgb(28 9 45);
+  padding: 10px 8px;
+}
+
+#wallet-balance {
+  font-size: 50px;
+  padding: 10px 10px 15px;
+  font-weight: 900;
+  color: rgb(255 255 255);
+  font-family: sans-serif;
+  text-shadow: 4px 4px 6px rgb(0 0 0 / 20%);
+}
+
+button {
+  background-color: rgb(112 11 132);
+  color: aliceblue;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.add-amount-div {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.add-amount-div label {
+  font-size: 18px;
+}
+
+#add-amount-input {
+  width: 80px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid purple;
+}
+
+.create-page-container {
+  border: 2px solid #ccc;
+  background-color: #ccc;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.create-page-container .label {
+  margin: 30px 10px;
+  color: rgb(82 16 143);
+}
+
+.create-page-container input {
+  padding: 8px;
+  border-radius: 8px;
+  margin: 10px;
+  border: 2px solid purple;
+}
+
+.create-page-container .add-button {
+  margin: 30px auto 10px 200px;
+  color: rgb(232 187 241);
+}
+
+.create-page-container .cancel-button {
+  background-color: steelblue;
+  margin-left: 10px;
+}

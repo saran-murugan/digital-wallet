@@ -1,7 +1,54 @@
-{{page-title "DigitalWallet"}}
-
-{{! The following component displays Ember's default welcome message. }}
-<WelcomePage />
-{{! Feel free to remove this! }}
-
+{{#if (eq this.currentRoute "index")}}
+<div class="container">
+    <div class="wallet-div">
+        <h1>Digital Wallet</h1>
+        <div id="wallet-balance">${{this.moneyBalance}}</div>
+        {{#if (eq this.isShowAddAmount false)}}<button type="button" {{on "click" this.toggleAddAmount}}>Add money</button>{{/if}}
+        {{#if this.isShowAddAmount}}
+        <div class="add-amount-div">
+            <label>Enter the amount:</label>
+            <input type="text" id="add-amount-input" {{on "input" this.updateAmount}}>
+            <button type="button" {{on "click" this.addAmount}}>Add</button>
+        </div>
+        {{/if}}
+    </div>
+    <div class="subscription-div">
+        <div class="subscription-table-header">
+            <h1>Subscriptions</h1>
+            <LinkTo @route="create-page"><button type="button" id="add-page-btn">Add subscription</button></LinkTo>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Subscription plan</th>
+                    <th>Billing cycle</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Payment method</th>
+                    <th>Edit option</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each @model.subscriptionList as |subscriber|}}
+                <tr>
+                    <td>{{subscriber.name}}</td>
+                    <td>{{subscriber.plan}}</td>
+                    <td>{{subscriber.cycle}}</td>
+                    <td>${{subscriber.amount}}</td>
+                    <td>{{subscriber.category}}</td>
+                    <td>{{subscriber.paymentMethod}}</td>
+                    <td>
+                        <LinkTo @route="edit" @model={{subscriber.id}}>
+                            <button type="button">Edit</button>
+                        </LinkTo>
+                        <button type="button" {{on "click" (fn this.deleteSubscriber subscriber)}}>Delete</button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+{{/if}}
 {{outlet}}

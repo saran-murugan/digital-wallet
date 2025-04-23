@@ -1,0 +1,36 @@
+<div class="create-page-container">
+    <h1>Create Page</h1>
+    <form>
+        <label class="label">Name:</label>
+        <input type="text" placeholder="Enter the name" {{on "input" this.updateName}}>
+        <br>
+        <label class="label">Subscription Plan:</label>
+        <label><input type="radio" name="plan" {{on "change" (fn this.updateSubscriptionPlan "Standard")}}>Standard</label>
+        <label><input type="radio" name="plan" {{on "change" (fn this.updateSubscriptionPlan "Pro")}}>Pro</label>
+        <label><input type="radio" name="plan" {{on "change" (fn this.updateSubscriptionPlan "Pro+")}}>Pro+</label>
+        <br>
+        <label class="label">Billing cycle:</label>
+        <label><input type="radio" name="cycle" {{on "change" (fn this.updateBillingCycle "Weekly")}}>Weekly</label>
+        <label><input type="radio" name="cycle" {{on "change" (fn this.updateBillingCycle "Monthly")}}>Monthly</label>
+        <label><input type="radio" name="cycle" {{on "change" (fn this.updateBillingCycle "Yearly")}}>Yearly</label>
+        <br>
+        <label class="label">Amount</label>
+        <input type="text" placeholder="Enter the amount" {{on "input" this.updateAmount}}>
+        <br>
+        <label class="label">Category:</label>
+        <label><input type="radio" name="category" {{on "change" (fn this.updateCategory "Entertainment")}}>Entertainment</label>
+        <label><input type="radio" name="category" {{on "change" (fn this.updateCategory "Music")}}>Music</label>
+        <label><input type="radio" name="category" {{on "change" (fn this.updateCategory "Amazon Prime")}}>Amazon Prime</label>
+        <label><input type="radio" name="category" {{on "change" (fn this.updateCategory "Jio Hotstar")}}>Jio Hotstar</label>
+        <br>
+        <label class="label">Payment Method</label>
+        <label><input type="radio" name="method" {{on "change" (fn this.updatePaymentMethod "UPI")}}>UPI</label>
+        <label><input type="radio" name="method" {{on "change" (fn this.updatePaymentMethod "Debit Card")}}>Debit Card</label>
+        <label><input type="radio" name="method" {{on "change" (fn this.updatePaymentMethod "Net Banking")}}>Net Banking</label>
+        <label><input type="radio" name="method" {{on "change" (fn this.updatePaymentMethod "Wallet")}}>Wallet</label>
+        <br>
+        <button class="add-button create-btn" type="button" {{on "click" this.addSubscription}}>Add subscriber</button>
+        <button class="cancel-button" type="submit" {{on "click" this.goBack}}>Cancel</button>
+        
+    </form>
+</div>

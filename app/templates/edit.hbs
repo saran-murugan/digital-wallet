@@ -1,0 +1,38 @@
+<div class="create-page-container">
+    <h1>Edit List</h1>
+    <form>
+        {{log @model.editSub}}
+        <label class="label">Name:</label>
+        <input type="text" value={{@model.editSub.name}} {{on "input" (fn this.updateField "name")}} placeholder="Enter the name">
+        <br>
+        <label class="label">Subscription Plan:</label>
+        {{log this.editedPlan}}
+        <label><input type="radio" value="Standard" checked={{eq this.plan "Standard"}} name="plan" {{on "change" (fn this.updateField "plan")}}/>Standard</label>
+        <label><input type="radio" value="Pro" checked={{eq this.plan "Pro"}} name="plan" {{on "change" (fn this.updateField "plan")}}/>Pro</label>
+        <label><input type="radio" value="Pro+" checked={{eq this.plan "Pro+"}} name="plan" {{on "change" (fn this.updateField "plan")}}/>Pro+</label>
+        <br>
+        <label class="label">Billing cycle:</label>
+        <label><input type="radio" value="Weekly" checked={{eq this.cycle "wWekly"}} name="cycle" {{on "change" (fn this.updateField "cycle")}}>Weekly</label>
+        <label><input type="radio" value="Monthly" checked={{eq this.cycle "Monthly"}} name="cycle"{{on "change" (fn this.updateField "cycle")}}>Monthly</label>
+        <label><input type="radio" value="Yearly" checked={{eq this.cycle "Yearly"}} name="cycle" {{on "change" (fn this.updateField "cycle")}}>Yearly</label>
+        <br>
+        <label class="label">Amount</label>
+        <input type="text" value={{@model.editSub.amount}} {{on "input" (fn this.updateField "amount")}} placeholder="Enter the amount" >
+        <br>
+        <label class="label">Category:</label>
+        <label><input type="radio" value="Entertainment" checked={{eq this.category "Entertainment"}} name="category" {{on "change" (fn this.updateField "category")}}>Entertainment</label>
+        <label><input type="radio" value="Music" checked={{eq this.category "Music"}} name="category" {{on "change" (fn this.updateField "category")}}>Music</label>
+        <label><input type="radio" value="Amazon Prime" checked={{eq this.category "Amazon Prime"}} name="category" {{on "change" (fn this.updateField "category")}}>Amazon Prime</label>
+        <label><input type="radio" value="Jio Hotstar" checked={{eq this.category "Jio Hotstar"}} name="category" {{on "change" (fn this.updateField "category")}}>Jio Hotstar</label>
+        <br>
+        <label class="label">Payment Method</label>
+        <label><input type="radio" value="UPI" checked={{eq this.paymentMethod "UPI"}} name="method" {{on "change" (fn this.updateField "paymentMethod")}}>UPI</label>
+        <label><input type="radio" value="Debit Card" checked={{eq this.paymentMethod "Debit Card"}}  name="method" {{on "change" (fn this.updateField "paymentMethod")}}>Debit Card</label>
+        <label><input type="radio" value="Net Banking" checked={{eq this.paymentMethod "Net Banking"}}  name="method" {{on "change" (fn this.updateField "paymentMethod")}}>Net Banking</label>
+        <label><input type="radio" value="Wallet" checked={{eq this.paymentMethod "Wallet"}}  name="method" {{on "change" (fn this.updateField "paymentMethod")}}>Wallet</label>
+        <br>
+        <button class="add-button create-btn" type="button" {{on "click" this.saveEdit}}>save edit</button>
+        <button class="cancel-button" type="submit" {{on "click" this.goBack}}>Cancel</button>
+        
+    </form>
+</div>
