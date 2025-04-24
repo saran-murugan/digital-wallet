@@ -16,7 +16,10 @@ export default class EditController extends Controller {
             this.subscriptions.subscriptionList = JSON.parse(savedEditListFromLocalStorage);
           });
     }
-  }
+/*     console.log(this.listIndex);
+ */  }
+
+  @tracked listIndex = this.model;
 
   @tracked editedName = '';
   @tracked editedAmount = '';
@@ -28,17 +31,17 @@ export default class EditController extends Controller {
 
   @action updateField(fieldName,event) {
     this.model.editSub[fieldName] = event.target.value;
-    if (fieldName === 'plan') this.plan = event.target.value;
+    /* if (fieldName === 'plan') this.plan = event.target.value;
     if (fieldName === 'cycle') this.cycle = event.target.value;
     if (fieldName === 'category') this.category = event.target.value;
-    if (fieldName === 'paymentMethod') this.paymentMethod = event.target.value;  
+    if (fieldName === 'paymentMethod') this.paymentMethod = event.target.value;  */ 
 }
 
   @action saveEdit(){
     let {editSub,listIndex} = this.model;
     this.subscriptions.subscriptionList[listIndex] = { ...editSub };
     localStorage.setItem("savedEditList",JSON.stringify(this.subscriptions.subscriptionList));
-    this.router.transitionTo("index")
+    this.router.transitionTo("index");
   }
 
   @action goBack() {

@@ -1,18 +1,16 @@
 <div class="create-page-container">
     <h1>Edit List</h1>
     <form>
-        {{log @model.editSub}}
         <label class="label">Name:</label>
         <input type="text" value={{@model.editSub.name}} {{on "input" (fn this.updateField "name")}} placeholder="Enter the name">
         <br>
         <label class="label">Subscription Plan:</label>
-        {{log this.editedPlan}}
         <label><input type="radio" value="Standard" checked={{eq this.plan "Standard"}} name="plan" {{on "change" (fn this.updateField "plan")}}/>Standard</label>
         <label><input type="radio" value="Pro" checked={{eq this.plan "Pro"}} name="plan" {{on "change" (fn this.updateField "plan")}}/>Pro</label>
         <label><input type="radio" value="Pro+" checked={{eq this.plan "Pro+"}} name="plan" {{on "change" (fn this.updateField "plan")}}/>Pro+</label>
         <br>
         <label class="label">Billing cycle:</label>
-        <label><input type="radio" value="Weekly" checked={{eq this.cycle "wWekly"}} name="cycle" {{on "change" (fn this.updateField "cycle")}}>Weekly</label>
+        <label><input type="radio" value="Weekly" checked={{eq this.cycle "Weekly"}} name="cycle" {{on "change" (fn this.updateField "cycle")}}>Weekly</label>
         <label><input type="radio" value="Monthly" checked={{eq this.cycle "Monthly"}} name="cycle"{{on "change" (fn this.updateField "cycle")}}>Monthly</label>
         <label><input type="radio" value="Yearly" checked={{eq this.cycle "Yearly"}} name="cycle" {{on "change" (fn this.updateField "cycle")}}>Yearly</label>
         <br>

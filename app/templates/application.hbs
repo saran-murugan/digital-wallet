@@ -1,53 +1,152 @@
 {{#if (eq this.currentRoute "index")}}
 <div class="container">
-    <div class="wallet-div">
-        <h1>Digital Wallet</h1>
-        <div id="wallet-balance">${{this.moneyBalance}}</div>
-        {{#if (eq this.isShowAddAmount false)}}<button type="button" {{on "click" this.toggleAddAmount}}>Add money</button>{{/if}}
-        {{#if this.isShowAddAmount}}
-        <div class="add-amount-div">
-            <label>Enter the amount:</label>
-            <input type="text" id="add-amount-input" {{on "input" this.updateAmount}}>
-            <button type="button" {{on "click" this.addAmount}}>Add</button>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            Utopia Wallet
         </div>
-        {{/if}}
+        <div class="profile-div">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHGKQbAICHPoyIb28DBWuPT2VTSxUaSVLjyA&s" width="80" height="80">
+            <h1>Brian O'Conner</h1>
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li><img src="/home.png" width="40" height="40"><p>Home</p></li>
+                <li><img src="/subscription.png" width="40" height="40"><p>Subscriptions</p></li>
+                <li><img src="/calendar.png" width="40" height="40"><p>Calendar</p></li>
+                <li><img src="/spending.png" width="40" height="40"><p>Spendings</p></li>
+                <li><img src="/settings.png" width="40" height="40"><p>Settings</p></li>
+            </ul>
+        </div>
+        <div class="sidebar-footer">
+            <img src="/user.png" width="40" height="40">
+            <p>Account</p>
+        </div>
     </div>
-    <div class="subscription-div">
-        <div class="subscription-table-header">
-            <h1>Subscriptions</h1>
-            <LinkTo @route="create-page"><button type="button" id="add-page-btn">Add subscription</button></LinkTo>
+    <div class="wallet-subscriptions">
+        <div class="wallet-div">
+            <h1>Digital Wallet</h1>
+            <div id="wallet-balance">${{this.moneyBalance}}
+                <img src="/wallet2.png" width="60" height="60">
+            </div>
+            {{#if (eq this.isShowAddAmount false)}}<button type="button" {{on "click" this.toggleAddAmount}}>Add money</button>{{/if}}
+            {{#if this.isShowAddAmount}}
+            <div class="add-amount-div">
+                <label>Enter the amount:</label>
+                <input type="text" id="add-amount-input" {{on "input" this.updateAmount}}>
+                <button type="button" {{on "click" this.addAmount}}>Add</button>
+            </div>
+            {{/if}}
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Subscription plan</th>
-                    <th>Billing cycle</th>
-                    <th>Amount</th>
-                    <th>Category</th>
-                    <th>Payment method</th>
-                    <th>Edit option</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each @model.subscriptionList as |subscriber|}}
-                <tr>
-                    <td>{{subscriber.name}}</td>
-                    <td>{{subscriber.plan}}</td>
-                    <td>{{subscriber.cycle}}</td>
-                    <td>${{subscriber.amount}}</td>
-                    <td>{{subscriber.category}}</td>
-                    <td>{{subscriber.paymentMethod}}</td>
-                    <td>
-                        <LinkTo @route="edit" @model={{subscriber.id}}>
-                            <button type="button">Edit</button>
-                        </LinkTo>
-                        <button type="button" {{on "click" (fn this.deleteSubscriber subscriber)}}>Delete</button>
-                    </td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
+        <div class="subscription-div">
+            <div class="subscription-table-header">
+                <h1>Subscriptions</h1>
+                <LinkTo @route="create-page"><button type="button" id="add-page-btn">Add subscription</button></LinkTo>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Subscription plan</th>
+                        <th>Billing cycle</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Payment method</th>
+                        <th>Edit option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each @model.subscriptionList as |subscriber|}}
+                    <tr>
+                        <td>{{subscriber.name}}</td>
+                        <td>{{subscriber.plan}}</td>
+                        <td>{{subscriber.cycle}}</td>
+                        <td>${{subscriber.amount}}</td>
+                        <td>{{subscriber.category}}</td>
+                        <td>{{subscriber.paymentMethod}}</td>
+                        <td>
+                            <LinkTo @route="edit" @model={{subscriber.id}}>
+                                <button type="button">Edit</button>
+                            </LinkTo>
+                            <button type="button" {{on "click" (fn this.deleteSubscriber subscriber)}}>Delete</button>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="payment-expired">
+        <div class="expired-payments">
+            <p class="title">Expired</p>
+            <hr>
+            <ul>
+                <li>
+                    <img src="/youtube.png" width="50" height="50">
+                    <div class="expired-name">
+                        <p class="first">Youtube</p>
+                        <p class="second">Standard</p>
+                    </div>
+                    <div class="expired-plan">
+                        <p class="first">$289</p>
+                        <p class="second">/month</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="/netflix.png" width="50" height="50">
+                    <div class="expired-name">
+                        <p class="first">Netflix</p>
+                        <p class="second">Pro</p>
+                    </div>
+                    <div class="expired-plan">
+                        <p class="first">$499</p>
+                        <p class="second">/month</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="/jiohotstar.webp" width="50" height="50">
+                    <div class="expired-name">
+                        <p class="first">Jio Hotstar</p>
+                        <p class="second">Standard</p>
+                    </div>
+                    <div class="expired-plan">
+                        <p class="first">$189</p>
+                        <p class="second">/month</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="/amazon-prime.webp" width="50" height="50">
+                    <div class="expired-name">
+                        <p class="first">Amazon Prime</p>
+                        <p class="second">Pro+</p>
+                    </div>
+                    <div class="expired-plan">
+                        <p class="first">$1999</p>
+                        <p class="second">/year</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="/linkedin.png" width="50" height="50">
+                    <div class="expired-name">
+                        <p class="first">LinkedIn</p>
+                        <p class="second">Standard</p>
+                    </div>
+                    <div class="expired-plan">
+                        <p class="first">$799</p>
+                        <p class="second">/month</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="payment-methods">
+            <p class="title">Payment Methods</p>
+            <hr>
+            <ul>
+                <li><img src="/card.png" width="40" height="40">Debit Card</li>
+                <li><img src="/mobile-banking.png" width="40" height="40">Net Banking</li>
+                <li><img src="/google-pay.png" width="40" height="40">UPI</li>
+                <li><img src="/wallet.png" width="40" height="40">Utopia Wallet</li>
+            </ul>
+        </div>
     </div>
 </div>
 {{/if}}

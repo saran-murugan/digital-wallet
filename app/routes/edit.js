@@ -22,6 +22,7 @@ export default class EditRoute extends Route {
     );
     let editList = this.subscriptions.subscriptionList[listIndex];
     
+    console.log({editSub: {...editList}, listIndex});
     return { editSub: { ...editList }, listIndex };
   }
 }

@@ -7,7 +7,7 @@ export default class SubscriptionsService extends Service {
       id: 1,
       name: 'Saran',
       plan: 'Standard',
-      cycle: 'weekly',
+      cycle: 'Weekly',
       amount: '250',
       category: 'Music',
       paymentMethod: 'UPI',
