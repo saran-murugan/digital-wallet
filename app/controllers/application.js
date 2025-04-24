@@ -23,9 +23,10 @@ export default class ApplicationController extends Controller {
     }
   }
 
+  @tracked moneyBalance = this.model.moneyBalance;
+
   @tracked isShowAddAmount = false;
   @tracked moneyInput = '';
-  @tracked moneyBalance = '0';
 
   @action toggleAddAmount() {
     this.isShowAddAmount = !this.isShowAddAmount;
@@ -36,14 +37,20 @@ export default class ApplicationController extends Controller {
   }
 
   @action addAmount() {
-    let money = Number(this.moneyBalance);
+    let money = Number(this.model.moneyBalance);
     money += Number(this.moneyInput);
-    this.moneyBalance = money;
-    localStorage.setItem('moneyBalance', this.moneyBalance);
+    this.model.moneyBalance = money;
+    localStorage.setItem('moneyBalance', this.model.moneyBalance);
     this.isShowAddAmount = false;
   }
 
   @action deleteSubscriber(subscriber) {
+    if(subscriber.paymentMethod === "Wallet"){
+      let money = Number(this.model.moneyBalance);
+      money += Number(subscriber.amount);
+      this.model.moneyBalance = money;
+      localStorage.setItem('moneyBalance', this.model.moneyBalance);   
+    }
     this.subscriptions.subscriptionList =
       this.subscriptions.subscriptionList.filter(
         (list) => list.id !== subscriber.id,

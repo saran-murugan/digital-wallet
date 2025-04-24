@@ -16,10 +16,9 @@ export default class EditController extends Controller {
             this.subscriptions.subscriptionList = JSON.parse(savedEditListFromLocalStorage);
           });
     }
-/*     console.log(this.listIndex);
- */  }
+  }
 
-  @tracked listIndex = this.model;
+  @tracked subscriptionList = [...this.subscriptions.subscriptionList];
 
   @tracked editedName = '';
   @tracked editedAmount = '';

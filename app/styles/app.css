@@ -85,65 +85,73 @@ body {
   text-align: center;
   width: 100%;
   height: 100%;
-  background-color:  rgb(220, 151, 239);
+  background:linear-gradient(45deg,rgb(234, 151, 234)10%,rgb(109, 5, 109)90%);
 }
 
 h1 {
   font-family: Georgia, "Times New Roman", Times, serif;
   padding: 5px;
-  color: rgb(112 11 132);
+  color:#ddd;
 }
 
 .container .wallet-div {
-  border: 2px solid #ccc;
   width: 40%;
-  background-color: rgb(238, 235, 211);
-  box-shadow: 2px 2px 5px rgb(0 0 0 / 20%);
+  background-color: rgba(0, 0, 0, 0.156);
+  box-shadow:5px 5px 10px rgb(0 0 0 / 20%),-5px -5px 10px rgb(171, 29, 171);
+  backdrop-filter:blur(10px);
   padding: 20px;
   margin:40px 0 0 150px;
   border-radius: 20px;
 }
 
 #add-page-btn {
-  margin: 0 0 20px 700px;
+  margin: 5px 0 20px 700px;
 }
 
 .subscription-div {
-  border: 2px solid #ccc;
-  box-shadow: 3px 3px 5px rgb(0 0 0 / 20%);
+  box-shadow:5px 5px 10px rgb(0 0 0 / 20%),-5px -5px 10px rgb(171, 29, 171);
   width: 1000px;
-  height: 370px;
-  background-color: rgb(238, 235, 211);
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.211);
+  backdrop-filter:blur(10px);
   margin: 50px 0 0 40px;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 10px;
+}
+
+.table-container{
+  width: 100%;
+  height: 250px;
+  overflow: auto;
+  scrollbar-width: none;
 }
 
 .subscription-div table {
   border-collapse: collapse;
   width: 100%;
   border: 1px solid transparent;
-  background-color: #ccc;
+  background-color: rgba(255, 255, 255, 0.173);
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 20%);
+  backdrop-filter:blur(10px);
   border-radius: 10px;
-  padding: 20px;
-  overflow: hidden;
-  box-shadow:
-    5px 5px 10px rgb(0 0 0 / 20%),
-    -5px -5px 10px rgb(0 0 0 / 20%);
+  overflow: auto;
+  box-shadow:5px 5px 10px rgb(0 0 0 / 20%),-5px -5px 10px rgb(0 0 0 / 20%);
 }
 
 .subscription-div table th,
 td {
-  border-bottom: 1px solid #ddd;
-  padding: 8px;
+  border-bottom: 1px solid #333;
+  padding: 8px 2px;
   font-size: 18px;
-  color: rgb(112 11 132);
+  color: #fff;
   font-weight: 600;
+  text-align: center;
+  text-wrap: nowrap;
 }
 
 .subscription-div table th {
-  color: rgb(28 9 45);
-  padding: 10px 8px;
+  color: #333;
+  padding: 8px 2px;
 }
 
 #wallet-balance {
@@ -191,15 +199,16 @@ button {
 }
 
 .payment-methods{
-  background-color: rgb(238, 235, 211);
+  background-color: rgba(0, 0, 0, 0.156);
+  box-shadow:5px 5px 10px rgb(0 0 0 / 20%),-5px -5px 10px rgb(171, 29, 171);
+  backdrop-filter:blur(10px);
   padding: 20px;
   width: 400px;
   height:370px;
   margin:-50px 0 0px 20px;
-  border: 2px solid #ccc;
   border-radius: 10px;
-  box-shadow: 3px 3px 5px rgb(0 0 0 / 20%);
   font-size: 20px;
+  color: #ddd;
 }
 .payment-methods ul{
   list-style: none;
@@ -213,17 +222,18 @@ button {
   padding: 15px;
 }
 .expired-payments{
-  background-color: rgb(238, 235, 211);
+  background-color: rgba(0, 0, 0, 0.156);
+  box-shadow:5px 5px 10px rgb(0 0 0 / 20%),-5px -5px 10px rgb(171, 29, 171);
+  backdrop-filter:blur(10px);
   padding: 20px;
   width: 700px;
   margin:40px 0 0 -400px;
   height:330px;
   font-size: 20px;
-  border: 2px solid #ccc;
   border-radius: 10px;
   overflow: auto;
   scrollbar-width: none;
-  box-shadow: 4px 4px 5px rgb(0 0 0 / 20%);
+  color: #ddd;
 }
 .title{
   font-size: 24px;

@@ -24,8 +24,9 @@
     </div>
     <div class="wallet-subscriptions">
         <div class="wallet-div">
-            <h1>Digital Wallet</h1>
-            <div id="wallet-balance">${{this.moneyBalance}}
+            <h1 class="title">Digital Wallet</h1>
+            <hr>
+            <div id="wallet-balance">${{this.model.moneyBalance}}
                 <img src="/wallet2.png" width="60" height="60">
             </div>
             {{#if (eq this.isShowAddAmount false)}}<button type="button" {{on "click" this.toggleAddAmount}}>Add money</button>{{/if}}
@@ -39,19 +40,21 @@
         </div>
         <div class="subscription-div">
             <div class="subscription-table-header">
-                <h1>Subscriptions</h1>
-                <LinkTo @route="create-page"><button type="button" id="add-page-btn">Add subscription</button></LinkTo>
+                <h1 class="title">Subscriptions</h1>
+                <hr>
+                <LinkTo @route="create-page" ><button type="button" id="add-page-btn">Add subscription</button></LinkTo>
             </div>
+            <div class="table-container">
             <table>
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Subscription plan</th>
-                        <th>Billing cycle</th>
+                        <th>Plan</th>
+                        <th>Cycle</th>
                         <th>Amount</th>
                         <th>Category</th>
                         <th>Payment method</th>
-                        <th>Edit option</th>
+                        <th>Options</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,6 +76,7 @@
                     {{/each}}
                 </tbody>
             </table>
+        </div>
         </div>
     </div>
     <div class="payment-expired">

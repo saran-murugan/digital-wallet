@@ -18,6 +18,11 @@ export default class CreatePageController extends Controller {
         savedSubscriptionListFromLocalStorage,
       );
     }
+
+    /* const savedMoneyBalanceFromLocalStorage = localStorage.getItem("savedMoneyBalance");
+    if(savedMoneyBalanceFromLocalStorage){
+      this.model.moneyBalance = savedMoneyBalanceFromLocalStorage;
+    } */
   }
 
   @tracked name = '';
@@ -68,6 +73,12 @@ export default class CreatePageController extends Controller {
       category: this.category,
       paymentMethod: this.paymentMethod,
     };
+    if(newSubscription.paymentMethod === "Wallet"){
+      let money = Number(this.model.moneyBalance);
+      money -= Number(newSubscription.amount);
+      this.model.moneyBalance = money;
+      localStorage.setItem("savedMoneyBalance",this.model.moneyBalance);
+    }
     this.subscriptions.addSubscriber(newSubscription);
     localStorage.setItem(
       'savedSubscriptionList',
