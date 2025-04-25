@@ -13,8 +13,9 @@ export default class ApplicationController extends Controller {
   @tracked isShowAddAmount = false;
   @tracked moneyInput = '';
   @tracked isNavActive = {
-    home:false, subscriptions:false
-  }
+    home: false,
+    subscriptions: false,
+  };
 
   @action toggleAddAmount() {
     this.isShowAddAmount = !this.isShowAddAmount;
@@ -29,13 +30,13 @@ export default class ApplicationController extends Controller {
   }
 
   @action addAmount() {
-    this.subscriptions.addAmount(this.moneyInput);
+    this.subscriptions.addAmount(this.moneyInput,`Own top up by admin`);
     this.isShowAddAmount = false;
   }
 
   @action deleteSubscriber(subscriber) {
     if (subscriber.paymentMethod === 'Wallet') {
-      this.subscriptions.returnAmount(subscriber.amount);
+      this.subscriptions.returnAmount(subscriber,`${subscriber.category} subscription cancelled, money refunded to the wallet`);
     }
     this.subscriptions.deleteSubscriber(subscriber.id);
   }

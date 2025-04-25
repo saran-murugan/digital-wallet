@@ -1,0 +1,28 @@
+<div class="transactions-container">
+    <h1 class="title">Transactions History</h1>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{log this.model}}
+                {{#each this.model as |transactionInfo|}}
+                <tr>
+                    <td>{{transactionInfo.name}}</td>
+                    <td>{{transactionInfo.type}}</td>
+                    <td>{{transactionInfo.amount}}</td>
+                    <td>{{transactionInfo.description}}</td>
+                    <td>{{transactionInfo.date}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

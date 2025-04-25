@@ -13,6 +13,11 @@ export default class SubscriptionsService extends Service {
     if (savedMoneyBalance) {
       this.moneyBalance = Number(savedMoneyBalance);
     }
+
+    const savedTransactionHistory = localStorage.getItem("transactionHistory");
+    if(savedTransactionHistory){
+      this.transactionsHistory = JSON.parse(savedTransactionHistory);
+    }
   }
 
   @tracked moneyBalance = 1000;
@@ -56,6 +61,21 @@ export default class SubscriptionsService extends Service {
     },
   ];
 
+  @tracked transactionsHistory = [];
+
+  addTransactionsHistory(type,amount,description,name){
+    let date = new Date().toLocaleString();
+    const transactions = {
+      name:name,
+      type:type,
+      description:description,
+      date:date,
+      amount:amount,
+    }
+    this.transactionsHistory = [...this.transactionsHistory,transactions];
+    localStorage.setItem("transactionHistory",JSON.stringify(this.transactionsHistory));
+  }
+
   addSubscriber(newSubscription) {
     console.log(newSubscription);
     this.subscriptionList = [...this.subscriptionList, newSubscription];
@@ -73,19 +93,22 @@ export default class SubscriptionsService extends Service {
       JSON.stringify(this.subscriptionList),
     );
   }
-  deductBalance(amount) {
-    this.moneyBalance -= Number(amount);
+  deductBalance(newSubscription,description) {
+    this.moneyBalance -= Number(newSubscription.amount);
     localStorage.setItem('moneyBalance', this.moneyBalance);
+    this.addTransactionsHistory("Deduct",newSubscription.amount,description,newSubscription.name);
   }
 
-  addAmount(moneyInput) {
+  addAmount(moneyInput,description) {
     this.moneyBalance += Number(moneyInput);
     localStorage.setItem('moneyBalance', this.moneyBalance);
+    this.addTransactionsHistory("Top up",moneyInput,description,"Admin");
   }
 
-  returnAmount(amount) {
-    this.moneyBalance += Number(amount);
+  returnAmount(subscriber,description) {
+    this.moneyBalance += Number(subscriber.amount);
     localStorage.setItem('moneyBalance', this.moneyBalance);
+    this.addTransactionsHistory("Refund",subscriber.amount,description,subscriber.name);
   }
 
   balanceFromLocalStorage() {

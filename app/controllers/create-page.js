@@ -56,7 +56,7 @@ export default class CreatePageController extends Controller {
       paymentMethod: this.paymentMethod,
     };
     if (newSubscription.paymentMethod === 'Wallet') {
-      this.subscriptions.deductBalance(newSubscription.amount);
+      this.subscriptions.deductBalance(newSubscription,`${newSubscription.category} subscription added, paid from the wallet`);
     }
     this.subscriptions.addSubscriber(newSubscription);
     this.router.transitionTo('index');

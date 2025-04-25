@@ -9,4 +9,5 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('create-page');
   this.route('edit', { path: 'edit/:id' });
+  this.route('transactions');
 });
