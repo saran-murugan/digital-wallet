@@ -6,30 +6,22 @@ import { service } from '@ember/service';
 export default class ApplicationController extends Controller {
   @service subscriptions;
 
-  constructor() {
-    super(...arguments);
-
-    const savedBalanceFromLocalStorage = localStorage.getItem('moneyBalance');
-    if (savedBalanceFromLocalStorage) {
-      this.moneyBalance = savedBalanceFromLocalStorage;
-    }
-
-    const savedAfterDeleteFromLocalStorage =
-      localStorage.getItem('savedAfterDelete');
-    if (savedAfterDeleteFromLocalStorage) {
-      this.subscriptions.subscriptionList = JSON.parse(
-        savedAfterDeleteFromLocalStorage,
-      );
-    }
-  }
-
-  @tracked moneyBalance = this.model.moneyBalance;
+  /* get walletBalance() {
+    return this.subscriptions.moneyBalance;
+  } */
 
   @tracked isShowAddAmount = false;
   @tracked moneyInput = '';
+  @tracked isNavActive = {
+    home:false, subscriptions:false
+  }
 
   @action toggleAddAmount() {
     this.isShowAddAmount = !this.isShowAddAmount;
+  }
+
+  @action navActive(navName) {
+    this.isNavActive[navName] = true;
   }
 
   @action updateAmount(event) {
@@ -37,27 +29,14 @@ export default class ApplicationController extends Controller {
   }
 
   @action addAmount() {
-    let money = Number(this.model.moneyBalance);
-    money += Number(this.moneyInput);
-    this.model.moneyBalance = money;
-    localStorage.setItem('moneyBalance', this.model.moneyBalance);
+    this.subscriptions.addAmount(this.moneyInput);
     this.isShowAddAmount = false;
   }
 
   @action deleteSubscriber(subscriber) {
-    if(subscriber.paymentMethod === "Wallet"){
-      let money = Number(this.model.moneyBalance);
-      money += Number(subscriber.amount);
-      this.model.moneyBalance = money;
-      localStorage.setItem('moneyBalance', this.model.moneyBalance);   
+    if (subscriber.paymentMethod === 'Wallet') {
+      this.subscriptions.returnAmount(subscriber.amount);
     }
-    this.subscriptions.subscriptionList =
-      this.subscriptions.subscriptionList.filter(
-        (list) => list.id !== subscriber.id,
-      );
-    localStorage.setItem(
-      'savedAfterDelete',
-      JSON.stringify(this.subscriptions.subscriptionList),
-    );
+    this.subscriptions.deleteSubscriber(subscriber.id);
   }
 }

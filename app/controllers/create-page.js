@@ -7,24 +7,6 @@ export default class CreatePageController extends Controller {
   @service router;
   @service subscriptions;
 
-  constructor() {
-    super(...arguments);
-
-    const savedSubscriptionListFromLocalStorage = localStorage.getItem(
-      'savedSubscriptionList',
-    );
-    if (savedSubscriptionListFromLocalStorage) {
-      this.subscriptions.subscriptionList = JSON.parse(
-        savedSubscriptionListFromLocalStorage,
-      );
-    }
-
-    /* const savedMoneyBalanceFromLocalStorage = localStorage.getItem("savedMoneyBalance");
-    if(savedMoneyBalanceFromLocalStorage){
-      this.model.moneyBalance = savedMoneyBalanceFromLocalStorage;
-    } */
-  }
-
   @tracked name = '';
   @tracked subscriptionPlan = '';
   @tracked billingCycle = '';
@@ -73,17 +55,10 @@ export default class CreatePageController extends Controller {
       category: this.category,
       paymentMethod: this.paymentMethod,
     };
-    if(newSubscription.paymentMethod === "Wallet"){
-      let money = Number(this.model.moneyBalance);
-      money -= Number(newSubscription.amount);
-      this.model.moneyBalance = money;
-      localStorage.setItem("savedMoneyBalance",this.model.moneyBalance);
+    if (newSubscription.paymentMethod === 'Wallet') {
+      this.subscriptions.deductBalance(newSubscription.amount);
     }
     this.subscriptions.addSubscriber(newSubscription);
-    localStorage.setItem(
-      'savedSubscriptionList',
-      JSON.stringify(this.subscriptions.subscriptionList),
-    );
     this.router.transitionTo('index');
   }
 

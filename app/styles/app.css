@@ -5,11 +5,6 @@
 }
 
 body {
-  background: linear-gradient(
-    45deg,
-    rgb(255 179 255) 0%,
-    rgb(147 8 147) 80%
-  );
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,89 +13,104 @@ body {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-.sidebar{
+.sidebar {
   height: 100%;
   width: 20%;
   border-radius: 0 20px 20px 0;
-  background-color:rgb(238, 235, 211);
+  background-color: rgba(0, 0, 0, 0.089);
+  backdrop-filter: blur(10px);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
-.sidebar .sidebar-header{
-  background-color: rgb(108, 13, 108);
+.sidebar .sidebar-header {
+  background-color: rgb(40, 24, 180);
   padding: 30px;
-  border-radius:0 20px 0 0;
+  border-radius: 0 20px 0 0;
   font-size: 32px;
   font-weight: 600;
   color: #ddd;
 }
-.profile-div{
+.profile-div {
   display: flex;
   padding: 10px;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background-color: #ddd;
+  background-color: #ccc;
 }
-.profile-div h1{
+.profile-div h1 {
   font-size: 26px;
   color: #333;
 }
-.profile-div img{
+.profile-div img {
   border-radius: 50%;
   border: 2px solid #ccc;
 }
-.sidebar-menu ul{
+.sidebar-menu ul {
   list-style: none;
   margin: 50px 10px;
 }
-.sidebar-menu ul li{
+.sidebar-menu ul li {
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
   font-size: 26px;
-  padding:20px 40px;
+  padding: 20px 40px;
   gap: 30px;
   cursor: pointer;
+  color: white;
 }
-.sidebar-menu ul li:hover{
-  background-color: rgb(241, 115, 241);
+a {
+  text-decoration: none;
+}
+.sidebar-menu ul li:hover {
+  background-color: rgb(96, 168, 226);
   border-radius: 8px;
 }
 
-.sidebar-footer{
+.sidebar-footer {
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
   font-size: 30px;
   padding: 20px 0 30px 60px;
-  margin:140px auto 0 auto;
-  background-color: #ddd;
+  margin: 140px auto 0 auto;
+  background-color: #ccc;
   gap: 30px;
 }
 
-.container {
+.main-container {
   border: 2px solid #ccc;
   display: flex;
   text-align: center;
   width: 100%;
   height: 100%;
-  background:linear-gradient(45deg,rgb(234, 151, 234)10%,rgb(109, 5, 109)90%);
+  background: linear-gradient(
+    45deg,
+    rgb(96, 168, 226) 10%,
+    rgb(69, 52, 216) 90%
+  );
 }
 
 h1 {
   font-family: Georgia, "Times New Roman", Times, serif;
   padding: 5px;
-  color:#ddd;
+  color: #ddd;
+  font-size: 26px;
+}
+.container {
+  display: flex;
 }
 
 .container .wallet-div {
   width: 40%;
   background-color: rgba(0, 0, 0, 0.156);
-  box-shadow:5px 5px 10px rgb(0 0 0 / 20%),-5px -5px 10px rgb(171, 29, 171);
-  backdrop-filter:blur(10px);
+  box-shadow:
+    5px 5px 10px rgb(0 0 0 / 20%),
+    -5px -5px 10px rgb(96, 168, 226);
+  backdrop-filter: blur(10px);
   padding: 20px;
-  margin:40px 0 0 150px;
+  margin: 40px 0 0 150px;
   border-radius: 20px;
 }
 
@@ -109,21 +119,25 @@ h1 {
 }
 
 .subscription-div {
-  box-shadow:5px 5px 10px rgb(0 0 0 / 20%),-5px -5px 10px rgb(171, 29, 171);
+  box-shadow:
+    5px 5px 10px rgb(0 0 0 / 20%),
+    -5px -5px 10px rgb(96, 168, 226);
   width: 1000px;
   height: 400px;
   background-color: rgba(0, 0, 0, 0.211);
-  backdrop-filter:blur(10px);
+  backdrop-filter: blur(10px);
   margin: 50px 0 0 40px;
   border-radius: 10px;
   padding: 20px 10px;
 }
 
-.table-container{
+.table-container {
   width: 100%;
   height: 250px;
   overflow: auto;
   scrollbar-width: none;
+  border-radius: 10px;
+  border: 1px solid #ccc;
 }
 
 .subscription-div table {
@@ -132,10 +146,12 @@ h1 {
   border: 1px solid transparent;
   background-color: rgba(255, 255, 255, 0.173);
   box-shadow: 2px 2px 5px rgb(0 0 0 / 20%);
-  backdrop-filter:blur(10px);
+  backdrop-filter: blur(10px);
   border-radius: 10px;
   overflow: auto;
-  box-shadow:5px 5px 10px rgb(0 0 0 / 20%),-5px -5px 10px rgb(0 0 0 / 20%);
+  box-shadow:
+    5px 5px 10px rgb(0 0 0 / 20%),
+    -5px -5px 10px rgb(0 0 0 / 20%);
 }
 
 .subscription-div table th,
@@ -148,6 +164,10 @@ td {
   text-align: center;
   text-wrap: nowrap;
 }
+
+/* .subscription-div table thead{
+  position: sticky;
+} */
 
 .subscription-div table th {
   color: #333;
@@ -168,7 +188,7 @@ td {
 }
 
 button {
-  background-color:rgb(17, 80, 132);
+  background-color: rgb(17, 80, 132);
   color: aliceblue;
   padding: 8px 10px;
   border-radius: 10px;
@@ -189,71 +209,74 @@ button {
   width: 80px;
   padding: 8px;
   border-radius: 8px;
-  border: 2px solid purple;
+  border: 2px solid rgb(96, 168, 226);
 }
 
-.payment-expired{
+.payment-expired {
   display: flex;
   flex-direction: column;
   gap: 100px;
 }
 
-.payment-methods{
+.payment-methods {
   background-color: rgba(0, 0, 0, 0.156);
-  box-shadow:5px 5px 10px rgb(0 0 0 / 20%),-5px -5px 10px rgb(171, 29, 171);
-  backdrop-filter:blur(10px);
+  box-shadow:
+    5px 5px 10px rgb(0 0 0 / 20%),
+    -5px -5px 10px rgb(96, 168, 226);
+  backdrop-filter: blur(10px);
   padding: 20px;
   width: 400px;
-  height:370px;
-  margin:-50px 0 0px 20px;
+  height: 370px;
+  margin: -50px 0 0px 20px;
   border-radius: 10px;
   font-size: 20px;
   color: #ddd;
 }
-.payment-methods ul{
+.payment-methods ul {
   list-style: none;
   margin: 5px;
 }
-.payment-methods ul li{
+.payment-methods ul li {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 50px;
   padding: 15px;
 }
-.expired-payments{
+.expired-payments {
   background-color: rgba(0, 0, 0, 0.156);
-  box-shadow:5px 5px 10px rgb(0 0 0 / 20%),-5px -5px 10px rgb(171, 29, 171);
-  backdrop-filter:blur(10px);
+  box-shadow:
+    5px 5px 10px rgb(0 0 0 / 20%),
+    -5px -5px 10px rgb(96, 168, 226);
+  backdrop-filter: blur(10px);
   padding: 20px;
   width: 700px;
-  margin:40px 0 0 -400px;
-  height:330px;
+  margin: 40px 0 0 -400px;
+  height: 330px;
   font-size: 20px;
   border-radius: 10px;
   overflow: auto;
   scrollbar-width: none;
   color: #ddd;
 }
-.title{
+.title {
   font-size: 24px;
   text-align: left;
   padding: 5px;
   text-wrap: nowrap;
   position: sticky;
 }
-.expired-payments ul{
+.expired-payments ul {
   list-style: none;
   padding: 10px;
 }
-.expired-payments ul li{
+.expired-payments ul li {
   display: flex;
   justify-content: space-between;
   gap: 50px;
   align-items: center;
   padding: 10px;
 }
-
 
 .create-page-container {
   border: 2px solid #ccc;
@@ -268,6 +291,7 @@ button {
   align-items: center;
   border-radius: 12px;
 }
+
 
 .create-page-container .label {
   margin: 30px 10px;

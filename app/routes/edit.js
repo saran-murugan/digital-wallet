@@ -13,16 +13,13 @@ export default class EditRoute extends Route {
   }
 
   model(params) {
-    
     const listId = parseInt(params.id, 10);
-    const listIndex = this.subscriptions.subscriptionList.findIndex(
-      (list) => {
-        return list.id === listId;
-      },
-    );
+    const listIndex = this.subscriptions.subscriptionList.findIndex((list) => {
+      return list.id === listId;
+    });
     let editList = this.subscriptions.subscriptionList[listIndex];
-    
-    console.log({editSub: {...editList}, listIndex});
+
+    console.log({ editSub: { ...editList }, listIndex });
     return { editSub: { ...editList }, listIndex };
   }
 }
