@@ -12,17 +12,13 @@ export default class ApplicationController extends Controller {
 
   @tracked isShowAddAmount = false;
   @tracked moneyInput = '';
-  @tracked isNavActive = {
-    home: false,
-    subscriptions: false,
-  };
 
   @action toggleAddAmount() {
     this.isShowAddAmount = !this.isShowAddAmount;
   }
 
-  @action navActive(navName) {
-    this.isNavActive[navName] = true;
+  @action cancelAddAmount(){
+    this.isShowAddAmount = false;
   }
 
   @action updateAmount(event) {

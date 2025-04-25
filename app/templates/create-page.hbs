@@ -1,6 +1,7 @@
 <div class="create-page-container">
-    <h1>Create Page</h1>
     <form>
+        <h1>Add Subscription</h1>
+        <hr>
         <label class="label">Name:</label>
         <input type="text" placeholder="Enter the name" {{on "input" this.updateName}}>
         <br>
@@ -14,7 +15,7 @@
         <label><input type="radio" name="cycle" {{on "change" (fn this.updateBillingCycle "Monthly")}}>Monthly</label>
         <label><input type="radio" name="cycle" {{on "change" (fn this.updateBillingCycle "Yearly")}}>Yearly</label>
         <br>
-        <label class="label">Amount</label>
+        <label class="label">Amount:</label>
         <input type="text" placeholder="Enter the amount" {{on "input" this.updateAmount}}>
         <br>
         <label class="label">Category:</label>
@@ -23,7 +24,7 @@
         <label><input type="radio" name="category" {{on "change" (fn this.updateCategory "Amazon Prime")}}>Amazon Prime</label>
         <label><input type="radio" name="category" {{on "change" (fn this.updateCategory "Jio Hotstar")}}>Jio Hotstar</label>
         <br>
-        <label class="label">Payment Method</label>
+        <label class="label">Payment Method:</label>
         <label><input type="radio" name="method" {{on "change" (fn this.updatePaymentMethod "UPI")}}>UPI</label>
         <label><input type="radio" name="method" {{on "change" (fn this.updatePaymentMethod "Debit Card")}}>Debit Card</label>
         <label><input type="radio" name="method" {{on "change" (fn this.updatePaymentMethod "Net Banking")}}>Net Banking</label>

@@ -1,16 +1,23 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+:root{
+  --bg-color:rgba(255, 255, 255, 0.156);
+  --box-shadow:5px 5px 10px rgb(0 0 0 / 20%), -5px -5px 10px rgba(27, 44, 96, 0.332);
+  --bg-gradient:linear-gradient(285deg, rgba(57, 57, 57, 0.04) 0%, rgba(57, 57, 57, 0.04) 25%,rgba(126, 126, 126, 0.04) 25%, rgba(126, 126, 126, 0.04) 50%,rgba(80, 80, 80, 0.04) 50%, rgba(80, 80, 80, 0.04) 75%,rgba(117, 117, 117, 0.04) 75%, rgba(117, 117, 117, 0.04) 100%),linear-gradient(333deg, rgba(26, 26, 26, 0.04) 0%, rgba(26, 26, 26, 0.04) 25%,rgba(154, 154, 154, 0.04) 25%, rgba(154, 154, 154, 0.04) 50%,rgba(218, 218, 218, 0.04) 50%, rgba(218, 218, 218, 0.04) 75%,rgba(91, 91, 91, 0.04) 75%, rgba(91, 91, 91, 0.04) 100%),linear-gradient(45deg, rgba(14, 14, 14, 0.04) 0%, rgba(14, 14, 14, 0.04) 25%,rgba(216, 216, 216, 0.04) 25%, rgba(216, 216, 216, 0.04) 50%,rgba(44, 44, 44, 0.04) 50%, rgba(44, 44, 44, 0.04) 75%,rgba(111, 111, 111, 0.04) 75%, rgba(111, 111, 111, 0.04) 100%),linear-gradient(251deg, rgba(27, 27, 27, 0.04) 0%, rgba(27, 27, 27, 0.04) 25%,rgba(107, 107, 107, 0.04) 25%, rgba(107, 107, 107, 0.04) 50%,rgba(167, 167, 167, 0.04) 50%, rgba(167, 167, 167, 0.04) 75%,rgba(34, 34, 34, 0.04) 75%, rgba(34, 34, 34, 0.04) 100%),linear-gradient(63deg, rgba(114, 114, 114, 0.04) 0%, rgba(114, 114, 114, 0.04) 25%,rgba(16, 16, 16, 0.04) 25%, rgba(16, 16, 16, 0.04) 50%,rgba(190, 190, 190, 0.04) 50%, rgba(190, 190, 190, 0.04) 75%,rgba(159, 159, 159, 0.04) 75%, rgba(159, 159, 159, 0.04) 100%),linear-gradient(90deg, rgb(44, 69, 142),rgb(133, 17, 234));
+}
 body {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .sidebar {
@@ -24,7 +31,7 @@ body {
 }
 
 .sidebar .sidebar-header {
-  background-color: rgb(40 24 180);
+  background-color: rgba(40, 24, 180, 0.158);
   padding: 30px;
   border-radius: 0 20px 0 0;
   font-size: 32px;
@@ -38,12 +45,12 @@ body {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background-color: #ccc;
+  background-color:var(--bg-color);
 }
 
 .profile-div h1 {
   font-size: 26px;
-  color: #333;
+  color: #ccc;
 }
 
 .profile-div img {
@@ -60,7 +67,7 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: 26px;
+  font-size: 25px;
   padding: 20px 40px;
   gap: 30px;
   cursor: pointer;
@@ -72,7 +79,7 @@ a {
 }
 
 .sidebar-menu ul li:hover {
-  background-color: rgb(96 168 226);
+  background-color: rgba(96, 167, 226, 0.451);
   border-radius: 8px;
 }
 
@@ -83,8 +90,9 @@ a {
   font-size: 30px;
   padding: 20px 0 30px 60px;
   margin: 140px auto 0;
-  background-color: #ccc;
+  background-color: var(--bg-color);
   gap: 30px;
+  color: #ccc;
 }
 
 .main-container {
@@ -93,17 +101,17 @@ a {
   text-align: center;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    45deg,
-    rgb(96 168 226) 10%,
-    rgb(69 52 216) 90%
-  );
+  background-image:var(--bg-gradient);
+}
+
+input[type="radio"]{
+  width: 20px;
+  height: 20px;
 }
 
 h1 {
-  font-family: Georgia, "Times New Roman", Times, serif;
   padding: 5px;
-  color: #ddd;
+  color: #fff;
   font-size: 26px;
 }
 
@@ -114,13 +122,11 @@ h1 {
 
 .container .wallet-div {
   width: 40%;
-  background-color: rgb(0 0 0 / 15.6%);
-  box-shadow:
-    5px 5px 10px rgb(0 0 0 / 20%),
-    -5px -5px 10px rgb(96 168 226);
+  background-color: var(--bg-color);
+  box-shadow:var(--box-shadow);
   backdrop-filter: blur(10px);
   padding: 20px;
-  margin: 40px 0 0 150px;
+  margin: 40px 0 0 200px;
   border-radius: 20px;
 }
 
@@ -129,38 +135,44 @@ h1 {
 }
 
 .subscription-div {
-  box-shadow:
-    5px 5px 10px rgb(0 0 0 / 20%),
-    -5px -5px 10px rgb(96 168 226);
-  width: 1000px;
-  height: 400px;
-  background-color: rgb(0 0 0 / 21.1%);
+  box-shadow:var(--box-shadow);
+  width: 900px;
+  height: 380px;
+  background-color: var(--bg-color);
   backdrop-filter: blur(10px);
-  margin: 50px 0 0 40px;
+  margin: 50px 0 0 80px;
   border-radius: 10px;
   padding: 20px 10px;
+}
+
+.subscription-div hr{
+  margin-bottom: 30px;
 }
 
 .subscription-div .table-container {
   width: 100%;
   height: 250px;
   overflow: auto;
-  scrollbar-width: none;
-  border-radius: 10px;
+  border-radius: 4px;
   border: 1px solid #ccc;
+}
+.subscription-div .table-container::-webkit-scrollbar{
+  width: 10px;
+}
+.subscription-div .table-container::-webkit-scrollbar-thumb{
+  background-color: #9f9d9d;
+  border-radius: 10px;
 }
 
 .subscription-div table {
   border-collapse: collapse;
   width: 100%;
   border: 1px solid transparent;
-  background-color: rgb(255 255 255 / 17.3%);
+  background-color: rgb(0 0 0 / 17.3%);
   backdrop-filter: blur(10px);
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: auto;
-  box-shadow:
-    5px 5px 10px rgb(0 0 0 / 20%),
-    -5px -5px 10px rgb(0 0 0 / 20%);
+  box-shadow: 5px 5px 10px rgb(0 0 0 / 20%), -5px -5px 10px rgb(0 0 0 / 20%);
 }
 
 .subscription-div table th,.subscription-div table td {
@@ -175,7 +187,7 @@ h1 {
 
 .subscription-div table th {
   color: #333;
-  padding: 8px 2px;
+  padding: 10px 2px;
 }
 
 #wallet-balance {
@@ -183,12 +195,15 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 10px 15px;
+  padding: 25px 10px 0 0;
   font-weight: 900;
   color: rgb(255 255 255);
   height: 200px;
-  font-family: sans-serif;
   text-shadow: 4px 4px 6px rgb(0 0 0 / 20%);
+}
+.add-amount-btn{
+  margin: -20px 0 20px 0;
+  padding: 10px;
 }
 
 button {
@@ -196,17 +211,21 @@ button {
   color: aliceblue;
   padding: 8px 10px;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 17px;
   cursor: pointer;
 }
 
 .add-amount-div {
   padding: 10px 0;
   text-align: center;
+  margin-top: -40px;
 }
 
 .add-amount-div label {
   font-size: 18px;
+}
+.add-amount-div button{
+  margin-top: 5px;
 }
 
 #add-amount-input {
@@ -216,55 +235,21 @@ button {
   border: 2px solid rgb(96 168 226);
 }
 
-.payment-expired {
-  display: flex;
-  flex-direction: column;
-  gap: 100px;
-}
-
-.payment-methods {
-  background-color: rgb(0 0 0 / 15.6%);
-  box-shadow:
-    5px 5px 10px rgb(0 0 0 / 20%),
-    -5px -5px 10px rgb(96 168 226);
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  width: 400px;
-  height: 370px;
-  margin: -50px 0 0 20px;
-  border-radius: 10px;
-  font-size: 20px;
-  color: #ddd;
-}
-
-.payment-methods ul {
-  list-style: none;
-  margin: 5px;
-}
-
-.payment-methods ul li {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 50px;
-  padding: 15px;
-}
+      /* Expired Payments  */
 
 .expired-payments {
-  background-color: rgb(0 0 0 / 15.6%);
-  box-shadow:
-    5px 5px 10px rgb(0 0 0 / 20%),
-    -5px -5px 10px rgb(96 168 226);
+  background-color: var(--bg-color);
+  box-shadow:var(--box-shadow);
   backdrop-filter: blur(10px);
   padding: 20px;
-  width: 700px;
-  margin: 40px 0 0 -400px;
+  width: 650px;
+  margin: 50px 0 0 -330px;
   height: 330px;
   font-size: 20px;
   border-radius: 10px;
   overflow: auto;
-  scrollbar-width: none;
   color: #ddd;
+  scrollbar-width: none;
 }
 
 .title {
@@ -272,58 +257,130 @@ button {
   text-align: left;
   padding: 5px;
   text-wrap: nowrap;
-  position: sticky;
 }
 
 .expired-payments ul {
   list-style: none;
-  padding: 10px;
+  padding: 6px;
 }
 
 .expired-payments ul li {
   display: flex;
-  justify-content: space-between;
-  gap: 50px;
+  justify-content: flex-start;
+  gap: 140px;
   align-items: center;
+  padding: 10px 20px;
+  position: relative;
+}
+.expired-payments ul li:hover{
+  background-color: rgba(0,0,0,0.3); 
+  border-radius: 10px;
+}
+
+.expired-payments ul li .expired-plan{
+  display: flex;
+  position: absolute;
+  right: 10px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.expired-payments ul li p:first-of-type{
+  text-align: left;
+  font-size: 22px;
+  text-wrap: nowrap;
+  color: #fff;
+}
+.expired-payments ul li p:nth-of-type(2){
+  text-align: left;
+  font-size: 16px;
+  color: #c4bdbd;
+}
+
+.payment-expired {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+
+          /* Payment methods  */
+
+.payment-methods {
+  background-color: var(--bg-color);
+  box-shadow:var(--box-shadow);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  width: 400px;
+  height: 380px;
+  margin: -50px 0 0 60px;
+  border-radius: 10px;
+  color: #ddd;
+}
+
+.payment-methods ul {
+  list-style: none;
+  margin: 15px;
+  font-size: 24px;
+}
+
+.payment-methods ul li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
   padding: 10px;
+}
+.payment-methods ul li:hover{
+  background-color: rgba(0,0,0,0.3); 
+  border-radius: 10px;
 }
 
 
       /* Add-subscription page  */
-.create-page-container {
-  border: 2px solid #ccc;
-  background-color: #ccc;
-  display: flex;
-  flex-direction: column;
-  padding: 50px 30px;
-  font-family: Arial, Helvetica, sans-serif;
+.create-page-container,.edit-page-container {
+  box-shadow:var(--box-shadow);
+  background-color: var(--bg-color);
+  backdrop-filter: blur(10px);
+  height: 60%;
+  padding: 30px 30px;
   font-weight: 600;
-  font-size: 18px;
-  justify-content: center;
-  align-items: center;
+  font-size: 20px;
   border-radius: 12px;
+  margin: 100px auto 0 auto;
+  text-align: left;
+}
+.create-page-container label,.edit-page-container label{
+  color: #333;
 }
 
-.create-page-container .label {
+.create-page-container .label,.edit-page-container .label{
   margin: 30px 10px;
-  color: rgb(82 16 143);
+  color: #ddd;
+  font-size: 22px;
 }
 
-.create-page-container input {
-  padding: 8px;
+.create-page-container input,.edit-page-container input {
+  padding: 10px;
+  font-size: 18px;
   border-radius: 8px;
-  margin: 10px;
-  border: 2px solid purple;
+  margin: 15px;
+  border: 2px solid #949191;
 }
 
-.create-page-container .add-button {
-  margin: 30px auto 10px 200px;
-  color: rgb(232 187 241);
+.create-page-container .add-button,.edit-page-container .edit-button {
+  margin: 30px auto 10px 250px;
+  padding:10px 15px;
+  font-size: 20px;
+}
+.create-page-container .add-button{
+  margin: 30px auto 10px 220px;
 }
 
-.create-page-container .cancel-button {
+.cancel-button {
   background-color: steelblue;
   margin-left: 10px;
+  padding:10px 15px;
+  font-size: 20px;
 }
 
                    /* transaction history */
@@ -333,28 +390,34 @@ button {
   padding: 40px;
   width: 85%;
   height: 550px;
-  border: 1px solid #ccc;
   flex-direction: column;
   border-radius: 10px;
-  background-color: #dddddd39;
+  box-shadow:var(--box-shadow);
+  background-color: var(--bg-color);
   backdrop-filter: blur(10px);
 }
-.transactions-container h1{
+.transactions-container hr{
   margin:0 0 50px 0;
 }
 
 .transactions-container .table-container{
   height: 300px;
   overflow: auto;
-  scrollbar-width: none;
   border-radius: 10px;
   border: 1px solid #ccc;
+}
+.transactions-container .table-container::-webkit-scrollbar{
+  width: 10px;
+}
+.transactions-container .table-container::-webkit-scrollbar-thumb{
+  background-color: #ccc;
+  border-radius: 10px;
 }
 .transactions-container table{
   border-collapse: collapse;
   border-radius: 10px;
   width: 100%;
-  background-color: #33333336;
+  background-color: #cbcbcb36;
 }
 .transactions-container table th,.transactions-container table td{
   border: 1px solid #afabab;
@@ -370,5 +433,6 @@ button {
   padding: 10px 15px;
 }
 table tbody tr:hover{
-  background-color: #afabab;
+  background-color: rgba(0,0,0,0.3); 
+  border-radius: 10px;
 }

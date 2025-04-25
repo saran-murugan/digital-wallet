@@ -31,12 +31,14 @@
                 <div id="wallet-balance">${{this.model.moneyBalance}}
                     <img src="/wallet2.png" width="60" height="60">
                 </div>
-                {{#if (eq this.isShowAddAmount false)}}<button type="button" {{on "click" this.toggleAddAmount}}>Add money</button>{{/if}}
+                {{#if (eq this.isShowAddAmount false)}}<button type="button" class="add-amount-btn" {{on "click" this.toggleAddAmount}}>Add money</button>{{/if}}
                 {{#if this.isShowAddAmount}}
                 <div class="add-amount-div">
                     <label>Enter the amount:</label>
                     <input type="text" id="add-amount-input" {{on "input" this.updateAmount}}>
+                    <br>
                     <button type="button" {{on "click" this.addAmount}}>Add</button>
+                    <button type="button" {{on "click" this.cancelAddAmount}}>Cancel</button>
                 </div>
                 {{/if}}
             </div>
@@ -44,7 +46,6 @@
                 <div class="subscription-table-header">
                     <h1 class="title">Subscriptions</h1>
                     <hr>
-                    <button type="button" id="add-page-btn">Add subscription</button>
                 </div>
                 <div class="table-container">
                 <table>
@@ -147,10 +148,10 @@
                 <h1 class="title">Payment Methods</h1>
                 <hr>
                 <ul>
-                    <li><img src="/card.png" width="40" height="40">Debit Card</li>
-                    <li><img src="/mobile-banking.png" width="40" height="40">Net Banking</li>
-                    <li><img src="/google-pay.png" width="40" height="40">UPI</li>
-                    <li><img src="/wallet.png" width="40" height="40">Utopia Wallet</li>
+                    <li><img src="/card.png" width="50" height="50">Debit Card</li>
+                    <li><img src="/mobile-banking.png" width="50" height="50">Net Banking</li>
+                    <li><img src="/google-pay.png" width="50" height="50">UPI</li>
+                    <li><img src="/wallet.png" width="50" height="50">Utopia Wallet</li>
                 </ul>
             </div>
         </div>
