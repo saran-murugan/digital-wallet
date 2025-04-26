@@ -56,14 +56,17 @@ export default class CreatePageController extends Controller {
       paymentMethod: this.paymentMethod,
     };
     if (newSubscription.paymentMethod === 'Wallet') {
-      this.subscriptions.deductBalance(newSubscription,`${newSubscription.category} subscription added, paid from the wallet`);
+      this.subscriptions.deductBalance(
+        newSubscription,
+        `${newSubscription.category} subscription added, paid from the wallet`,
+      );
     }
     this.subscriptions.addSubscriber(newSubscription);
-    this.router.transitionTo('index');
+    this.router.transitionTo('home');
   }
 
   @action goBack() {
-    this.router.transitionTo('index');
+    this.router.transitionTo('home');
     console.log('go Back');
   }
 }

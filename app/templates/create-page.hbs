@@ -30,8 +30,8 @@
         <label><input type="radio" name="method" {{on "change" (fn this.updatePaymentMethod "Net Banking")}}>Net Banking</label>
         <label><input type="radio" name="method" {{on "change" (fn this.updatePaymentMethod "Wallet")}}>Wallet</label>
         <br>
-        <button class="add-button create-btn" type="button" {{on "click" this.addSubscription}}>Add subscriber</button>
-        <button class="cancel-button" type="submit" {{on "click" this.goBack}}>Cancel</button>
+        <button class="add-button create-btn" type="button" {{on-key "Enter" this.addSubscription}} {{on "click" this.addSubscription}}>Add subscriber</button>
+        <button class="cancel-button" type="submit" {{on-key "Escape" this.goBack}} {{on "click" this.goBack}}>Cancel</button>
         
     </form>
 </div>

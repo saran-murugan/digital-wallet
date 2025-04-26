@@ -44,10 +44,10 @@ export default class EditController extends Controller {
       'savedEditList',
       JSON.stringify(this.subscriptions.subscriptionList),
     );
-    this.router.transitionTo('index');
+    this.router.transitionTo('home');
   }
 
   @action goBack() {
-    this.router.transitionTo('index');
+    this.router.transitionTo('home');
   }
 }

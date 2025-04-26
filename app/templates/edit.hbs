@@ -30,8 +30,8 @@
         <label><input type="radio" value="Net Banking" checked={{eq this.paymentMethod "Net Banking"}}  name="method" {{on "change" (fn this.updateField "paymentMethod")}}>Net Banking</label>
         <label><input type="radio" value="Wallet" checked={{eq this.paymentMethod "Wallet"}}  name="method" {{on "change" (fn this.updateField "paymentMethod")}}>Wallet</label>
         <br>
-        <button class="edit-button" type="button" {{on "click" this.saveEdit}}>save edit</button>
-        <button class="cancel-button" type="submit" {{on "click" this.goBack}}>Cancel</button>
+        <button class="edit-button" type="button" {{on-key "Enter" this.saveEdit}} {{on "click" this.saveEdit}}>save edit</button>
+        <button class="cancel-button" type="submit" {{on-key "Escape" this.goBack}} {{on "click" this.goBack}}>Cancel</button>
         
     </form>
 </div>

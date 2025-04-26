@@ -10,4 +10,5 @@ Router.map(function () {
   this.route('create-page');
   this.route('edit', { path: 'edit/:id' });
   this.route('transactions');
+  this.route('home');
 });
