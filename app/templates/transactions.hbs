@@ -1,6 +1,13 @@
 <div class="transactions-container" {{on-key "Backspace" this.goBack}}>
     <h1 class="title">Transactions History</h1>
     <hr>
+    <div class="power-type-filter">
+    <label>Filter by Type:</label>
+    <PowerSelect @options={{this.model.transactionTypes}} @selected={{this.model.transactionTypeFilter}}  @onChange={{this.updateTransactionTypes}} as |types|>
+        {{types}}
+    </PowerSelect>
+    </div>
+
     <div class="table-container">
         <table>
             <thead>
@@ -13,8 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                {{log this.model}}
-                {{#each this.model as |transactionInfo|}}
+                {{#each this.model.filteredList as |transactionInfo|}}
                 <tr>
                     <td>{{transactionInfo.name}}</td>
                     <td>{{transactionInfo.type}}</td>

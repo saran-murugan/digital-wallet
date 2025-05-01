@@ -5,6 +5,6 @@ export default class TransactionsRoute extends Route {
   @service subscriptions;
 
   model() {
-    return this.subscriptions.transactionsHistory;
+    return this.subscriptions;
   }
 }

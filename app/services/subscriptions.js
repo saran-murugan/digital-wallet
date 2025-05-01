@@ -79,6 +79,23 @@ export default class SubscriptionsService extends Service {
     );
   }
 
+       /* Wallet Transaction Filter */
+  @tracked transactionTypes = ["All","Top up","Refund","Deduct"];
+  @tracked transactionTypeFilter = "All";
+
+  get filteredList(){
+    let filtered = this.transactionsHistory;
+    if(this.transactionTypeFilter == "All") {
+      return filtered;
+    };
+
+    filtered = filtered.filter((transaction) => {
+        return transaction.type.includes(this.transactionTypeFilter);
+    })
+    return filtered;
+}
+        /* Wallet Transaction Filter */
+
   addSubscriber(newSubscription) {
     console.log(newSubscription);
     this.subscriptionList = [...this.subscriptionList, newSubscription];
