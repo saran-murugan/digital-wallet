@@ -4,6 +4,8 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 
 export default class HomeController extends Controller {
+
+
   @service subscriptions;
 
   @tracked isShowAddAmount = false;

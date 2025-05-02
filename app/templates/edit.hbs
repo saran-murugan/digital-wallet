@@ -11,9 +11,21 @@
         <label><input type="radio" value="Pro+" checked={{eq this.plan "Pro+"}} name="plan" {{on "change" (fn this.updateField "plan")}}/>Pro+</label>
         <br>
         <label class="label">Billing cycle:</label>
-        <label><input type="radio" value="Weekly" checked={{eq this.cycle "Weekly"}} name="cycle" {{on "change" (fn this.updateField "cycle")}}>Weekly</label>
-        <label><input type="radio" value="Monthly" checked={{eq this.cycle "Monthly"}} name="cycle"{{on "change" (fn this.updateField "cycle")}}>Monthly</label>
-        <label><input type="radio" value="Yearly" checked={{eq this.cycle "Yearly"}} name="cycle" {{on "change" (fn this.updateField "cycle")}}>Yearly</label>
+            <label for="seconds">Seconds: </label>
+            <select autofocus="10" id="seconds" name="seconds" {{on "change" (fn this.updateField "cycle" "seconds")}}>
+                <option value="5">5s</option>
+                <option value="10">10s</option>
+                <option value="15">15s</option>
+                <option value="20">20s</option>
+                <option value="30">30s</option>
+            </select>
+            <label for="minutes">Minutes: </label>
+            <select autofocus="3"id="minutes" name="minutes" {{on "change" (fn this.updateField "cycle" "minutes")}}>
+                <option value="1">1min</option>
+                <option value="2">2mins</option>
+                <option value="3">3mins</option>
+                <option value="5">5mins</option>
+            </select>
         <br>
         <label class="label">Amount</label>
         <input type="text" value={{@model.editSub.amount}} {{on "input" (fn this.updateField "amount")}} placeholder="Enter the amount" >

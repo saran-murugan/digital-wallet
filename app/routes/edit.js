@@ -8,6 +8,7 @@ export default class EditRoute extends Route {
     super.setupController(controller, model);
     controller.plan = model.editSub.plan;
     controller.cycle = model.editSub.cycle;
+    controller.timeUnit = model.editSub.timeUnit;
     controller.category = model.editSub.category;
     controller.paymentMethod = model.editSub.paymentMethod;
   }

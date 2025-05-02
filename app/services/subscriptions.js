@@ -11,6 +11,7 @@ export default class SubscriptionsService extends Service {
 
     const savedMoneyBalance = localStorage.getItem('moneyBalance');
     if (savedMoneyBalance) {
+      console.log(savedMoneyBalance);
       this.moneyBalance = Number(savedMoneyBalance);
     }
 
@@ -20,14 +21,15 @@ export default class SubscriptionsService extends Service {
     }
   }
 
-  @tracked moneyBalance = 1000;
+  @tracked moneyBalance = 10000;
 
   @tracked subscriptionList = [
     {
       id: 1,
       name: 'Saran',
       plan: 'Standard',
-      cycle: 'Weekly',
+      cycle: 10,
+      timeUnit: "seconds",
       amount: '159',
       category: 'Music',
       paymentMethod: 'UPI',
@@ -36,7 +38,8 @@ export default class SubscriptionsService extends Service {
       id: 2,
       name: 'Harry',
       plan: 'Pro',
-      cycle: 'Monthly',
+      cycle: 5,
+      timeUnit: "seconds",
       amount: '289',
       category: 'Entertainment',
       paymentMethod: 'Debit Card',
@@ -45,16 +48,18 @@ export default class SubscriptionsService extends Service {
       id: 3,
       name: 'Potter',
       plan: 'Pro+',
-      cycle: 'Yearly',
+      cycle: 2,
+      timeUnit: "minutes",
       amount: '699',
       category: 'Entertainment',
-      paymentMethod: 'Wallet',
+      paymentMethod: 'UPI',
     },
     {
       id: 4,
       name: 'Brian',
       plan: 'Pro+',
-      cycle: 'Yearly',
+      cycle: 10,
+      timeUnit: "seconds",
       amount: '699',
       category: 'Jio Hotstar',
       paymentMethod: 'Net Banking',
@@ -73,13 +78,10 @@ export default class SubscriptionsService extends Service {
       amount: amount,
     };
     this.transactionsHistory = [...this.transactionsHistory, transactions];
-    localStorage.setItem(
-      'transactionHistory',
-      JSON.stringify(this.transactionsHistory),
-    );
+    localStorage.setItem('transactionHistory',JSON.stringify(this.transactionsHistory),);
   }
 
-       /* Wallet Transaction Filter */
+          /* Wallet Transaction Filter */
   @tracked transactionTypes = ["All","Top up","Refund","Deduct"];
   @tracked transactionTypeFilter = "All";
 
@@ -94,7 +96,41 @@ export default class SubscriptionsService extends Service {
     })
     return filtered;
 }
-        /* Wallet Transaction Filter */
+          /*---------------------------*/
+    @tracked interval = null;
+  
+           /* Auto pay functionality */
+    autoPay(subscriber){
+      if(subscriber.paymentMethod != "Wallet") return;
+
+      let timeInterval  = 0;
+      if(subscriber.timeUnit == "seconds"){
+        timeInterval = subscriber.cycle*1000;
+        console.log(subscriber.cycle);
+      }
+      else{
+        timeInterval = subscriber.cycle*60*1000;
+        console.log(subscriber.cycle);
+      }
+
+        this.interval = setInterval(()=>{
+          if(this.moneyBalance >= Number(subscriber.amount)){
+          this.deductBalance(subscriber,`Autopay option paid the ${subscriber.category} subscription`);
+          }
+          else{
+          clearInterval(this.interval);
+          alert("Insufficient Wallet balance for the autopay");
+          }
+        },timeInterval);
+    }
+
+   /*  clearTimeInterval(){
+      if(this.interval){
+      clearInterval(this.interval)
+      this.interval = null;
+      }
+    } */
+          /* ------------------------ */
 
   addSubscriber(newSubscription) {
     console.log(newSubscription);
@@ -104,14 +140,24 @@ export default class SubscriptionsService extends Service {
       JSON.stringify(this.subscriptionList),
     );
   }
-  deleteSubscriber(subscriberId) {
-    this.subscriptionList = this.subscriptionList.filter(
-      (list) => list.id !== subscriberId,
-    );
+
+  editSubscriber(listIndex,editSub){
+    this.subscriptionList[listIndex] = { ...editSub };
     localStorage.setItem(
       'subscriptionList',
       JSON.stringify(this.subscriptionList),
     );
+  }
+
+  deleteSubscriber(subscriberId) {
+    this.subscriptionList = this.subscriptionList.filter(
+      (list) => list.id !== subscriberId,
+    );
+    clearInterval(this.interval);
+    localStorage.setItem(
+      'subscriptionList',
+      JSON.stringify(this.subscriptionList));
+    localStorage.setItem('moneyBalance', this.moneyBalance)
   }
   deductBalance(newSubscription, description) {
     this.moneyBalance -= Number(newSubscription.amount);
@@ -141,10 +187,10 @@ export default class SubscriptionsService extends Service {
     );
   }
 
-  balanceFromLocalStorage() {
+  /* balanceFromLocalStorage() {
     const savedMoneyBalance = localStorage.getItem('moneyBalance');
     if (savedMoneyBalance) {
       this.moneyBalance = Number(savedMoney);
     }
-  }
+  } */
 }

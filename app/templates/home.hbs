@@ -39,7 +39,11 @@
                     <tr>
                         <td>{{subscriber.name}}</td>
                         <td>{{subscriber.plan}}</td>
-                        <td>{{subscriber.cycle}}</td>
+                        {{#if (eq subscriber.timeUnit "minutes")}}
+                        <td>{{subscriber.cycle}}min</td>
+                        {{else}}
+                        <td>{{subscriber.cycle}}sec</td>
+                        {{/if}}
                         <td>${{subscriber.amount}}</td>
                         <td>{{subscriber.category}}</td>
                         <td>{{subscriber.paymentMethod}}</td>

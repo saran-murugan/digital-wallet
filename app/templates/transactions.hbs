@@ -20,6 +20,7 @@
                 </tr>
             </thead>
             <tbody>
+                {{#if this.model.filteredList}}
                 {{#each this.model.filteredList as |transactionInfo|}}
                 <tr>
                     <td>{{transactionInfo.name}}</td>
@@ -29,6 +30,11 @@
                     <td>{{transactionInfo.date}}</td>
                 </tr>
                 {{/each}}
+                {{else}}
+                <tr>
+                    <td colspan="5" id="fall-td">Wallet transactions history is empty</td>
+                </tr>
+                {{/if}}
             </tbody>
         </table>
     </div>

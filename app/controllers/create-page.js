@@ -10,6 +10,7 @@ export default class CreatePageController extends Controller {
   @tracked name = '';
   @tracked subscriptionPlan = '';
   @tracked billingCycle = '';
+  @tracked timeUnit = '';
   @tracked amount = '';
   @tracked category = '';
   @tracked paymentMethod = '';
@@ -20,9 +21,11 @@ export default class CreatePageController extends Controller {
   @action updateSubscriptionPlan(plan) {
     this.subscriptionPlan = plan;
   }
-  @action updateBillingCycle(cycle) {
-    this.billingCycle = cycle;
+  @action updateBillingCycle(unit,event) {
+      this.billingCycle = event.target.value;
+      this.timeUnit = unit;
   }
+  
   @action updateAmount(event) {
     this.amount = event.target.value;
   }
@@ -50,18 +53,26 @@ export default class CreatePageController extends Controller {
       id: this.subscriptions.subscriptionList.length + 1,
       name: this.name,
       plan: this.subscriptionPlan,
-      cycle: this.billingCycle,
+      cycle: Number(this.billingCycle),
+      timeUnit: this.timeUnit,
       amount: this.amount,
       category: this.category,
       paymentMethod: this.paymentMethod,
     };
     if (newSubscription.paymentMethod === 'Wallet') {
-      this.subscriptions.deductBalance(
-        newSubscription,
-        `${newSubscription.category} subscription added, paid from the wallet`,
-      );
+      if(this.subscriptions.moneyBalance >= Number(newSubscription.amount)){
+        this.subscriptions.deductBalance(
+          newSubscription,
+          `${newSubscription.category} subscription added, paid from the wallet`,
+        );
+      }
+      else{
+        alert("Insufficient Wallet balance");
+        return;
+      }
     }
     this.subscriptions.addSubscriber(newSubscription);
+    this.subscriptions.autoPay(newSubscription);
     this.router.transitionTo('home');
   }
 
