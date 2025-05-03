@@ -3,17 +3,16 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 
 export default class TransactionsController extends Controller {
-    @service router;
-    @service subscriptions;
+  @service router;
+  @service subscriptions;
 
-    @action goBack(){
-        this.router.transitionTo("home");
-    }
+  @action goBack() {
+    this.router.transitionTo('home');
+  }
 
-    /* Power select filtering wallet transaction types*/
+  /* Power select filtering wallet transaction types*/
 
-    @action updateTransactionTypes(event){
-        this.subscriptions.transactionTypeFilter = event;
-    }
-
+  @action updateTransactionTypes(event) {
+    this.subscriptions.transactionTypeFilter = event;
+  }
 }

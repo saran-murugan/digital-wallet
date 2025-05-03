@@ -16,23 +16,43 @@ export default class EditController extends Controller {
   @tracked category = '';
   @tracked paymentMethod = '';
 
-  @action updateField(fieldName,event) {
-    if(fieldName == "cycle"){
-      this.model.editSub[fieldName] = Number(event.target.value);
-    }
-    else{
+  @action updateField(fieldName, event) {
     this.model.editSub[fieldName] = event.target.value;
-    }
+  }
+
+  @action updateBillingCycle(event) {
+    let [cycle, unit] = event.target.value.split('-');
+    cycle = Number(cycle);
+    this.model.editSub['cycle'] = cycle;
+    this.model.editSub['timeUnit'] = unit;
+    console.log(
+      'before edit:',
+      this.cycle,
+      this.timeUnit,
+      'after edit:',
+      this.model.editSub['cycle'],
+      this.model.editSub['timeUnit'],
+    );
   }
 
   @action saveEdit() {
     let { editSub, listIndex } = this.model;
-    if (editSub.paymentMethod === 'Wallet') {
-      this.subscriptions.deductBalance(editSub,`${editSub.category} subscription, payment method changed to wallet`);
+    /*     console.log("paymentMethod:",this.paymentMethod,"editSub PaymentMethod:",editSub.paymentMethod);
+     */ if (
+      this.paymentMethod !== 'Wallet' &&
+      editSub.paymentMethod === 'Wallet' &&
+      this.subscriptions.moneyBalance >= Number(editSub.amount)
+    ) {
+      this.subscriptions.deductBalance(
+        editSub,
+        `${editSub.category} subscription, payment method changed to wallet`,
+      );
       this.subscriptions.autoPay(editSub);
     }
-    /* this.subscriptions.clearTimeInterval(); */
-    this.subscriptions.editSubscriber(listIndex,editSub);
+    if (editSub.paymentMethod !== 'Wallet') {
+      this.subscriptions.clearTimeInterval();
+    }
+    this.subscriptions.editSubscriber(listIndex, editSub);
     this.router.transitionTo('home');
   }
 

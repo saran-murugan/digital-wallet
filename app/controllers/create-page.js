@@ -21,11 +21,11 @@ export default class CreatePageController extends Controller {
   @action updateSubscriptionPlan(plan) {
     this.subscriptionPlan = plan;
   }
-  @action updateBillingCycle(unit,event) {
-      this.billingCycle = event.target.value;
-      this.timeUnit = unit;
+  @action updateBillingCycle(event) {
+    let [cycle, unit] = event.target.value.split('-');
+    this.billingCycle = cycle;
+    this.timeUnit = unit;
   }
-  
   @action updateAmount(event) {
     this.amount = event.target.value;
   }
@@ -35,7 +35,6 @@ export default class CreatePageController extends Controller {
   @action updatePaymentMethod(method) {
     this.paymentMethod = method;
   }
-
   @action addSubscription() {
     if (
       !this.name ||
@@ -60,14 +59,13 @@ export default class CreatePageController extends Controller {
       paymentMethod: this.paymentMethod,
     };
     if (newSubscription.paymentMethod === 'Wallet') {
-      if(this.subscriptions.moneyBalance >= Number(newSubscription.amount)){
+      if (this.subscriptions.moneyBalance >= Number(newSubscription.amount)) {
         this.subscriptions.deductBalance(
           newSubscription,
           `${newSubscription.category} subscription added, paid from the wallet`,
         );
-      }
-      else{
-        alert("Insufficient Wallet balance");
+      } else {
+        alert('Insufficient Wallet balance');
         return;
       }
     }

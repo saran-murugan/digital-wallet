@@ -29,7 +29,7 @@ export default class SubscriptionsService extends Service {
       name: 'Saran',
       plan: 'Standard',
       cycle: 10,
-      timeUnit: "seconds",
+      timeUnit: 'seconds',
       amount: '159',
       category: 'Music',
       paymentMethod: 'UPI',
@@ -39,7 +39,7 @@ export default class SubscriptionsService extends Service {
       name: 'Harry',
       plan: 'Pro',
       cycle: 5,
-      timeUnit: "seconds",
+      timeUnit: 'seconds',
       amount: '289',
       category: 'Entertainment',
       paymentMethod: 'Debit Card',
@@ -49,7 +49,7 @@ export default class SubscriptionsService extends Service {
       name: 'Potter',
       plan: 'Pro+',
       cycle: 2,
-      timeUnit: "minutes",
+      timeUnit: 'minutes',
       amount: '699',
       category: 'Entertainment',
       paymentMethod: 'UPI',
@@ -59,7 +59,7 @@ export default class SubscriptionsService extends Service {
       name: 'Brian',
       plan: 'Pro+',
       cycle: 10,
-      timeUnit: "seconds",
+      timeUnit: 'seconds',
       amount: '699',
       category: 'Jio Hotstar',
       paymentMethod: 'Net Banking',
@@ -78,59 +78,64 @@ export default class SubscriptionsService extends Service {
       amount: amount,
     };
     this.transactionsHistory = [...this.transactionsHistory, transactions];
-    localStorage.setItem('transactionHistory',JSON.stringify(this.transactionsHistory),);
+    localStorage.setItem(
+      'transactionHistory',
+      JSON.stringify(this.transactionsHistory),
+    );
   }
 
-          /* Wallet Transaction Filter */
-  @tracked transactionTypes = ["All","Top up","Refund","Deduct"];
-  @tracked transactionTypeFilter = "All";
+  /* Wallet Transaction Filter */
+  @tracked transactionTypes = ['All', 'Top up', 'Refund', 'Deduct'];
+  @tracked transactionTypeFilter = 'All';
 
-  get filteredList(){
+  get filteredList() {
     let filtered = this.transactionsHistory;
-    if(this.transactionTypeFilter == "All") {
+    if (this.transactionTypeFilter == 'All') {
       return filtered;
-    };
-
-    filtered = filtered.filter((transaction) => {
-        return transaction.type.includes(this.transactionTypeFilter);
-    })
-    return filtered;
-}
-          /*---------------------------*/
-    @tracked interval = null;
-  
-           /* Auto pay functionality */
-    autoPay(subscriber){
-      if(subscriber.paymentMethod != "Wallet") return;
-
-      let timeInterval  = 0;
-      if(subscriber.timeUnit == "seconds"){
-        timeInterval = subscriber.cycle*1000;
-        console.log(subscriber.cycle);
-      }
-      else{
-        timeInterval = subscriber.cycle*60*1000;
-        console.log(subscriber.cycle);
-      }
-
-        this.interval = setInterval(()=>{
-          if(this.moneyBalance >= Number(subscriber.amount)){
-          this.deductBalance(subscriber,`Autopay option paid the ${subscriber.category} subscription`);
-          }
-          else{
-          clearInterval(this.interval);
-          alert("Insufficient Wallet balance for the autopay");
-          }
-        },timeInterval);
     }
 
-   /*  clearTimeInterval(){
-      if(this.interval){
-      clearInterval(this.interval)
-      this.interval = null;
+    filtered = filtered.filter((transaction) => {
+      return transaction.type.includes(this.transactionTypeFilter);
+    });
+    return filtered;
+  }
+  /*---------------------------*/
+  @tracked interval = null;
+
+  /* Auto pay functionality */
+  autoPay(subscriber) {
+    console.log('autopay triggered');
+    if (subscriber.paymentMethod != 'Wallet') return;
+
+    let timeInterval = 0;
+    if (subscriber.timeUnit == 'seconds') {
+      timeInterval = subscriber.cycle * 1000;
+      console.log(timeInterval);
+    } else {
+      timeInterval = subscriber.cycle * 60 * 1000;
+      console.log(timeInterval);
+    }
+
+    this.interval = setInterval(() => {
+      if (this.moneyBalance >= Number(subscriber.amount)) {
+        this.deductBalance(
+          subscriber,
+          `Autopay option paid the ${subscriber.category} subscription`,
+        );
+      } else {
+        clearInterval(this.interval);
+        alert('Insufficient Wallet balance for the autopay');
       }
-    } */
-          /* ------------------------ */
+    }, timeInterval);
+  }
+
+  clearTimeInterval() {
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+    }
+  }
+  /* ------------------------ */
 
   addSubscriber(newSubscription) {
     console.log(newSubscription);
@@ -141,7 +146,7 @@ export default class SubscriptionsService extends Service {
     );
   }
 
-  editSubscriber(listIndex,editSub){
+  editSubscriber(listIndex, editSub) {
     this.subscriptionList[listIndex] = { ...editSub };
     localStorage.setItem(
       'subscriptionList',
@@ -156,8 +161,9 @@ export default class SubscriptionsService extends Service {
     clearInterval(this.interval);
     localStorage.setItem(
       'subscriptionList',
-      JSON.stringify(this.subscriptionList));
-    localStorage.setItem('moneyBalance', this.moneyBalance)
+      JSON.stringify(this.subscriptionList),
+    );
+    localStorage.setItem('moneyBalance', this.moneyBalance);
   }
   deductBalance(newSubscription, description) {
     this.moneyBalance -= Number(newSubscription.amount);

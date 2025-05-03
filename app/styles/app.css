@@ -82,25 +82,25 @@ body {
   background-color: rgb(96 167 226 / 45.1%);
   border-radius: 8px;
 }
-.intro-div{
+.intro-div {
   width: 100%;
   margin: auto 0;
 }
 
-.intro-p{
+.intro-p {
   color: #fff;
   font-size: 50px;
   font-weight: 700;
   text-align: center;
 }
 
-         /* sidebar-mini*/
-.sidebar-mini-container{
+/* sidebar-mini*/
+.sidebar-mini-container {
   width: 20%;
   height: 100%;
 }
 
-.sidebar.sidebar-mini{
+.sidebar.sidebar-mini {
   width: 25%;
   height: 100%;
   border-radius: 0 20px 20px 0;
@@ -110,18 +110,17 @@ body {
   padding: 20px 8px 20px 18px;
   gap: 30px;
 }
-.mini-header{
+.mini-header {
   background-color: var(--bg-gradient);
-  padding:20px 10px;
+  padding: 20px 10px;
 }
 .sidebar-mini .sidebar-footer {
   padding: 20px 0 35px 26px;
-} 
+}
 
-       /* ---------------- */
+/* ---------------- */
 
-
-       /* sidebar */
+/* sidebar */
 
 .sidebar {
   height: 100%;
@@ -235,8 +234,8 @@ h1 {
   margin: 40px 0 0 200px;
   border-radius: 20px;
 }
-           /*  home container  */
-.home-container{
+/*  home container  */
+.home-container {
   display: flex;
 }
 
@@ -509,6 +508,15 @@ button {
   font-size: 20px;
 }
 
+#select-second,
+#select-minutes {
+  padding: 6px 8px;
+  font-size: 16px;
+  margin: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
 /* transaction history */
 
 .transactions-container {
@@ -563,10 +571,10 @@ button {
   text-align: center;
   text-wrap: nowrap;
 }
-.transactions-container table td:first-of-type{
+.transactions-container table td:first-of-type {
   text-align: left;
 }
-.transactions-container table td:nth-of-type(4){
+.transactions-container table td:nth-of-type(4) {
   text-align: left;
 }
 
@@ -579,25 +587,25 @@ table tbody tr:hover {
   background-color: rgb(0 0 0 / 30%);
   border-radius: 10px;
 }
-#fall-td{
+#fall-td {
   text-align: center;
 }
 
-       /* power type filter  */
-.power-type-filter{
+/* power type filter  */
+.power-type-filter {
   display: flex;
-  justify-content:flex-end;
+  justify-content: flex-end;
   align-items: center;
   gap: 10px;
-  margin:-20px 50px 40px 0;
+  margin: -20px 50px 40px 0;
 }
-.power-type-filter label{
+.power-type-filter label {
   color: #fff;
   font-size: 20px;
 }
-.ember-basic-dropdown-trigger{
+.ember-basic-dropdown-trigger {
   width: 120px;
-  border:2px solid #ccc;
+  border: 2px solid #ccc;
   background-color: var(--bg-color);
   border-radius: 5px;
   padding: 4px 6px;
@@ -605,12 +613,12 @@ table tbody tr:hover {
   font-size: 18px;
 }
 
-#ember-basic-dropdown-wormhole .ember-view{
+#ember-basic-dropdown-wormhole .ember-view {
   position: absolute;
   top: 260px;
-  right:900px;
+  right: 900px;
   border: 2px solid #ccc;
-  background-color:var(--bg-color);
+  background-color: var(--bg-color);
   backdrop-filter: blur(20px);
   border-radius: 5px;
   height: 100px;
@@ -626,16 +634,16 @@ table tbody tr:hover {
   border-radius: 10px;
 }
 
-#ember-basic-dropdown-wormhole .ember-view ul{
+#ember-basic-dropdown-wormhole .ember-view ul {
   list-style: none;
   margin: 0;
 }
-#ember-basic-dropdown-wormhole .ember-view ul li{
-  border-bottom:1px solid #333;
+#ember-basic-dropdown-wormhole .ember-view ul li {
+  border-bottom: 1px solid #333;
   padding: 4px 8px;
   cursor: pointer;
 }
-#ember-basic-dropdown-wormhole .ember-view ul li:hover{
+#ember-basic-dropdown-wormhole .ember-view ul li:hover {
   background-color: #33333364;
   color: #ddd;
 }

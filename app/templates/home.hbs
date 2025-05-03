@@ -7,14 +7,14 @@
                 <img src="/wallet2.png" width="60" height="60">
             </div>
             {{#if (eq this.isShowAddAmount false)}}<button type="button" class="add-amount-btn" {{on "click" this.toggleAddAmount}}>Add money</button>{{/if}}
-            {{#liquid-if predicate=this.isShowAddAmount class="add-amount"}}
+            <LiquidIf @predicate={{this.isShowAddAmount}} @class="add-amount">
             <div class="add-amount-div" {{on-click-outside this.cancelAddAmount}}>
                 <label>Enter the amount:</label>
-                <input type="text" id="add-amount-input" {{on "input" this.updateAmount}}>
+                <input type="text" id="add-amount-input" {{on "input" this.updateAmount}} autofocus>
                 <br>
                 <button type="button" {{on-key "Enter" this.addAmount}} {{on "click" this.addAmount}}>Add</button>
             </div>
-            {{/liquid-if}}
+            </LiquidIf>
         </div>
         <div class="subscription-div">
             <div class="subscription-table-header">

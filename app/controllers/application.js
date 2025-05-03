@@ -5,10 +5,10 @@ import { action } from '@ember/object';
 export default class ApplicationController extends Controller {
   @tracked isMaximize = true;
 
-  @action Minimize(){
+  @action Minimize() {
     this.isMaximize = false;
   }
-  @action maximize(){
+  @action maximize() {
     this.isMaximize = true;
   }
 }

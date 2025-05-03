@@ -11,21 +11,22 @@
         <label><input type="radio" value="Pro+" checked={{eq this.plan "Pro+"}} name="plan" {{on "change" (fn this.updateField "plan")}}/>Pro+</label>
         <br>
         <label class="label">Billing cycle:</label>
-            <label for="seconds">Seconds: </label>
-            <select autofocus="10" id="seconds" name="seconds" {{on "change" (fn this.updateField "cycle" "seconds")}}>
-                <option value="5">5s</option>
-                <option value="10">10s</option>
-                <option value="15">15s</option>
-                <option value="20">20s</option>
-                <option value="30">30s</option>
-            </select>
-            <label for="minutes">Minutes: </label>
-            <select autofocus="3"id="minutes" name="minutes" {{on "change" (fn this.updateField "cycle" "minutes")}}>
-                <option value="1">1min</option>
-                <option value="2">2mins</option>
-                <option value="3">3mins</option>
-                <option value="5">5mins</option>
-            </select>
+        <select id="select-second" value="30-seconds" {{on "change" this.updateBillingCycle}}>
+            <optgroup label="seconds">
+                <option disabled>Select Cycle</option>
+                {{log this.cycle}}
+                <option selected={{eq this.cycle 5}} value="5-seconds">5s</option>
+                <option selected={{eq this.cycle 10}} value="10-seconds">10s</option>
+                <option selected={{eq this.cycle 20}} value="20-seconds">20s</option>
+                <option selected={{eq this.cycle 30}} value="30-seconds">30s</option>
+            </optgroup>
+            <optgroup label="minutes">
+                <option selected={{eq this.cycle 1}} value="1-minutes">1min</option>
+                <option selected={{eq this.cycle 2}} value="2-minutes">2mins</option>
+                <option selected={{eq this.cycle 3}} value="3-minutes">3mins</option>
+                <option selected={{and-eq-op this.cycle 5 this.timeUnit "minutes"}} value="5-minutes">5mins</option>
+            </optgroup>
+        </select>
         <br>
         <label class="label">Amount</label>
         <input type="text" value={{@model.editSub.amount}} {{on "input" (fn this.updateField "amount")}} placeholder="Enter the amount" >

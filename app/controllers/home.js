@@ -4,8 +4,6 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 
 export default class HomeController extends Controller {
-
-
   @service subscriptions;
 
   @tracked isShowAddAmount = false;
@@ -24,12 +22,11 @@ export default class HomeController extends Controller {
   }
 
   @action addAmount() {
-    if(this.moneyInput === ""){
-        alert("Enter some money to add.")
-    }
-    else{
-    this.subscriptions.addAmount(this.moneyInput, `Own top up by admin`);
-    this.isShowAddAmount = false;
+    if (this.moneyInput === '') {
+      alert('Enter some money to add.');
+    } else {
+      this.subscriptions.addAmount(this.moneyInput, `Own top up by admin`);
+      this.isShowAddAmount = false;
     }
   }
 
@@ -43,4 +40,3 @@ export default class HomeController extends Controller {
     this.subscriptions.deleteSubscriber(subscriber.id);
   }
 }
-

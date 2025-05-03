@@ -11,20 +11,20 @@
         <label><input type="radio" name="plan" {{on "change" (fn this.updateSubscriptionPlan "Pro+")}}>Pro+</label>
         <br>
         <label class="label">Billing cycle:
-        <label for="seconds">Seconds: </label>
-        <select id="seconds" name="seconds" {{on "change" (fn this.updateBillingCycle "seconds")}}>
-            <option value="5">5s</option>
-            <option value="10">10s</option>
-            <option value="15">15s</option>
-            <option value="20">20s</option>
-            <option value="30">30s</option>
-        </select>
-        <label for="minutes">Minutes: </label>
-        <select id="minutes" name="minutes" {{on "change" (fn this.updateBillingCycle "minutes")}}>
-            <option value="1">1min</option>
-            <option value="2">2mins</option>
-            <option value="3">3mins</option>
-            <option value="5">5mins</option>
+        <select id="select-second" name="cycle" {{on "change" this.updateBillingCycle}}>
+            <optgroup label="seconds">
+                <option selected disabled>Select Cycle</option>
+                <option value="5-seconds">5s</option>
+                <option value="10-seconds">10s</option>
+                <option value="20-seconds">20s</option>
+                <option value="30-seconds">30s</option>
+            </optgroup>
+            <optgroup label="minutes">
+                <option value="1-minutes">1min</option>
+                <option value="2-minutes">2mins</option>
+                <option value="3-minutes">3mins</option>
+                <option value="5-minutes">5mins</option>
+            </optgroup>
         </select>
         </label>
         <br>
